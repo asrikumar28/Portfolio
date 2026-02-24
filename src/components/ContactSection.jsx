@@ -54,8 +54,7 @@ export const ContactSection = () => {
                 </h2>
 
                 <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
-                    Have a project in mind or want to collaborate? Feel free to reach out.
-                    I'm always open to discussing new opportunities.
+                    If you’re working on something exciting or looking for a technical partner, let’s talk. I’m always open to new opportunities and collaborations.
                 </p>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
