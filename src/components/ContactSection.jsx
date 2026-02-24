@@ -7,13 +7,43 @@ export const ContactSection = () => {
     const { toast } = useToast();
     const [isSubmitting, setIsSubmitting] = useState(false);
 
-    const handleSubmit = () => {
+    const encode = (data) =>
+        new URLSearchParams(data).toString();
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
         setIsSubmitting(true);
-        toast({
-            title: "Submitting...",
-            description: "Your message is being sent.",
-        });
-        // Don't preventDefault — Netlify needs the POST submit.
+
+        const formEl = e.currentTarget;
+        const formData = new FormData(formEl);
+
+        // Build a plain object from FormData
+        const dataObj = Object.fromEntries(formData.entries());
+
+        try {
+            const res = await fetch("/", {
+                method: "POST",
+                headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                body: encode(dataObj),
+            });
+
+            if (!res.ok) throw new Error("Netlify form submit failed");
+
+            toast({
+                title: "Message sent!",
+                description: "Thanks — I’ll get back to you soon.",
+            });
+
+            formEl.reset();
+        } catch (err) {
+            console.error(err);
+            toast({
+                title: "Message not sent",
+                description: "Please try again, or email me directly.",
+            });
+        } finally {
+            setIsSubmitting(false);
+        }
     };
 
     return (
