@@ -15,9 +15,9 @@ const projects = [
         title: "C# Game Application",
         description:
             "Interactive Game Application utilizing C# and Unity to demonstrate a fun tank Game.",
-        image: "/projects/Ninepoint.JPG",
+        image: "/projects/Tank Image.JPG",
         tags: ["C#", "Unity"],
-        demoUrl: "https://github.com/Aahash2003/Tiny-Tanks-Maze-Runner",
+        demoUrl: "/projects/Tank Demo.mp4",
         githubUrl: "https://github.com/Aahash2003/Tiny-Tanks-Maze-Runner",
     },
     {
